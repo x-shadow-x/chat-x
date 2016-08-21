@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatApp">
+<head>
+	<meta charset="UTF-8">
+	<title>chat-x</title>
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/scrollbar.min.css">
+	<link rel="stylesheet" href="styles/index.css">
+</head>
+<body ng-controller="indexCtrl">
+		<!--[if lt IE 8]>
+	    <p class="browsehappy">
+	      你正在使用一个<strong>过时</strong>的浏览器。请<a class="link" href="http://browsehappy.com" target="_blank">升级你的浏览器</a>以使用chat-x~</p>
+	    </p>
+    <![endif]-->
+	<div class="main">
+		<div class="login_box" id="loginBox">
+			<h3>输入一个昵称，开始聊天吧</h3>
+			<i class="user_login_icon"></i>
+			<input type="text" placeholder="小x" id="nickInput" ng-model="nickName">
+			<button class="confirm" ng-click="sendNick()">确定</button>
+		</div>
+
+		<div class="chat_box" id="chatBox">
+			<h4>chat-x</h4>
+			<div class="msg_box" id="msgBox" ng-scroll="scroll()">
+				<ul id="msgList" ng-scroll="scroll(event)">
+					<!-- <li id="loadMore" ng-click="loadMore()">查看更多</li> -->
+				</ul>
+			</div>
+			<div class="input_box">
+				<div class="tool_bar">
+					<a href="javascript:;" title="表情" ng-click="showEmoji($event)" class="emoji_icon">
+						<div class="emoji_box">
+							<div class="emoji_content" id="emojiContent">
+								<ul class="emoji_lists">
+									<li ng-repeat="item in emojiLists">
+										<img src="{{item.path}}" alt="{{item.name}}">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</a>
+					<label href="javascript:;" title="图片" ng-click="sendPic()" class="pic_icon">
+						<input type="file" id="imgInput">
+					</label>
+				</div>
+				<div class="text_area_box" id="textAreaBox">
+					<div class="content" contenteditable="true" id="msg"></div>
+				</div>
+				<div class="send_box">
+					<a href="javascript:;" class="send_btn" ng-click="sendMsg()">
+						发送
+						<pre class="tip" ng-if="isMsgEmpty">发送内容不能为空</pre>
+					</a>
+				</div>
+			</div>
+		</div>
+		<span class="date_author">2016-8-2 designed by x</span>
+	</div>
+	<div class="hover" id="hover">
+		<div class="loading_box">
+			<i class="loading"></i><span>connecting to server...</span>
+		</div>
+	</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/scrollbar-mousewheel.min.js"></script>
+	<script src="js/scrollbar.min.js"></script>
+	<script src="js/iscroll.js"></script>
+	<script src="js/chat.js"></script>
+
+</body>
+</html>

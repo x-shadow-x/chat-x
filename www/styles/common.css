@@ -1,0 +1,83 @@
+body,p,h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	font-weight: normal;
+	color: #222;
+}
+a {
+	text-decoration: none;
+	color: #222;
+}
+html, body {
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	font-size: 13px;
+}
+body, button {
+	font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+body {
+	background: url('../content/images/body_bg.jpg') center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.loading {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-top: 4px solid rgba(255, 255, 255, 0.2);
+    border-right: 4px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+	border-left: 4px solid #fff;
+	border-radius: 20px;
+	vertical-align: middle;
+	margin-right: 15px;
+	-webkit-animation: loading .32s infinite linear;;
+	-o-animation: loading .32s infinite linear;;
+	animation-: loading .32s infinite linear;
+}
+@keyframes loading{
+	0% {
+		transform : rotate(0deg);
+	}
+	100% {
+		transform : rotate(360deg);
+	}
+}
+@-webkit-keyframes myrotate{
+	0% {
+		-webkit-transform : rotate(0deg);
+	}
+	100% {
+		-webkit-transform : rotate(360deg);
+	}
+}
+@-moz-keyframes myrotate{
+	0% {
+		-moz-transform : rotate(0deg);
+	}
+	100% {
+		-moz-transform : rotate(360deg);
+	}
+}
+@-ms-keyframes myrotate{
+	0% {
+		-ms-transform : rotate(0deg);
+	}
+	100% {
+		-ms-transform : rotate(360deg);
+	}
+}
+@-o-keyframes myrotate{
+	0% {
+		-o-transform : rotate(0deg);
+	}
+	100% {
+		-o-transform : rotate(360deg);
+	}
+}
