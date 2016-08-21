@@ -223,6 +223,14 @@ app.controller('indexCtrl', function($scope, $timeout) {
 
     var $msgList = $('#msgList');
 
+    $('#userLoginIcon').mouseenter(function() {
+        $('#changeHover').show();
+    });
+
+    $('#userLoginIcon').mouseleave(function() {
+        $('#changeHover').hide();
+    });
+
     // 滚动到顶部或底部的事件函数
     // $msgBox.scroll(function(e) {
     //     if($msgBox.scrollTop() === 0) {

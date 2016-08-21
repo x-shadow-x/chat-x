@@ -16,7 +16,9 @@
 	<div class="main">
 		<div class="login_box" id="loginBox">
 			<h3>输入一个昵称，开始聊天吧</h3>
-			<i class="user_login_icon"></i>
+			<a href="" class="user_login_icon" id="userLoginIcon">
+				<span class="change_hover" id="changeHover">更换头像</span>
+			</a>
 			<input type="text" placeholder="小x" id="nickInput" ng-model="nickName">
 			<button class="confirm" ng-click="sendNick()">确定</button>
 		</div>
