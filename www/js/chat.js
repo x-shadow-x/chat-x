@@ -38,8 +38,34 @@ app.controller('indexCtrl', function($scope, $timeout) {
             $('div.emoji_box').show();
         } else {
             $('div.emoji_box').hide();
+        } 
+    }
+
+    $(document).click(function() {
+        $('div.emoji_box').hide();
+    })
+    
+    var $emojiBtn = $('#emojiBtn');
+
+    $scope.addEmoji = function(e) {
+        var src = e.target.src;
+        if(!src) {// 弹出表情面板后用户没有点击中某个表情比如两个相邻表情的缝隙 ~则无法获得表情的路径 ~此时不做处理直接返回
+            return;
         }
-        
+        var imgStr = '<img class="text_img" src="' + src + '">';
+        var $msg = $('#msg');
+        var content = $msg.html();
+
+        if(content.indexOf('<div><br></div>') > -1) {// 一换行就选择表情符
+            content = content.replace('<div><br></div>', '<div>' + imgStr + '</div>');
+        } else {
+            if(content.lastIndexOf('</div>') > -1) {// 换行后已经输入部分内容了，此时换行后输入的内容是被包在一个div中的 ~此时用户需要在同一行追加表情 ~需要表情插入到这个div中
+                content = content.substring(0, content.lastIndexOf('</div>')) + imgStr + '</div>';
+            } else {// 第一次在信息发送框中输入内容 ~这行内容是没有div包裹的 ~若此时想在句子末尾追加表情 ~则直接凭拼接
+                content = content + imgStr;
+            }
+        }
+        $msg.html(content);
     }
 
     $('#imgInput').change(function() {
@@ -111,7 +137,6 @@ app.controller('indexCtrl', function($scope, $timeout) {
             // todo-------------系统消息
             var tipDom = createSysMsg(msg);
             appendToMsgList($msgBox, $msgList, tipDom);
-
         });
 
         this.socket.on('msgList', function(msgList) { // 请求显示的聊天数据
@@ -130,10 +155,8 @@ app.controller('indexCtrl', function($scope, $timeout) {
         });
 
         this.socket.on('emojiLists', function(data) {
-
             $scope.emojiLists = data;
             $scope.$digest();
-            console.log(Object.prototype.toString.call($scope.emojiLists[0]));
         });
     }
 
@@ -200,12 +223,13 @@ app.controller('indexCtrl', function($scope, $timeout) {
 
     var $msgList = $('#msgList');
 
-    $msgBox.scroll(function(e) {
-        if($msgBox.scrollTop() === 0) {
-            console.log('top');
-          } else if ($msgBox.scrollTop() === $msgBox.prop('scrollHeight') - $msgBox.height()) {
-            console.log('end');
-          }
-    });
+    // 滚动到顶部或底部的事件函数
+    // $msgBox.scroll(function(e) {
+    //     if($msgBox.scrollTop() === 0) {
+    //         console.log('top');
+    //       } else if ($msgBox.scrollTop() === $msgBox.prop('scrollHeight') - $msgBox.height()) {
+    //         console.log('end');
+    //       }
+    // });
 
 });

@@ -30,10 +30,10 @@
 			</div>
 			<div class="input_box">
 				<div class="tool_bar">
-					<a href="javascript:;" title="表情" ng-click="showEmoji($event)" class="emoji_icon">
+					<a href="javascript:;" title="表情" ng-click="showEmoji($event); $event.stopPropagation();" class="emoji_icon" id="emojiBtn">
 						<div class="emoji_box">
 							<div class="emoji_content" id="emojiContent">
-								<ul class="emoji_lists">
+								<ul class="emoji_lists" ng-click="addEmoji($event); $event.stopPropagation();">
 									<li ng-repeat="item in emojiLists">
 										<img src="{{item.path}}" alt="{{item.name}}">
 									</li>

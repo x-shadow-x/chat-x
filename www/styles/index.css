@@ -156,6 +156,7 @@
 	width: 435px;
 	padding: 15px 20px;
 	padding-right: 20px;
+	overflow: hidden;
 }
 .emoji_lists li {
 	display: inline-block;
@@ -325,4 +326,9 @@
 	color: #fff;
 	text-align: center;
 	margin: 10px auto;
+}
+.text_img {
+	width: 21px;
+	height: 21px;
+	vertical-align: middle;
 }
